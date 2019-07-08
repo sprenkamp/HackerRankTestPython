@@ -117,8 +117,8 @@ def remain(num):
     num.append(c)
     return num
 
-expr = "+ 6 * - 4 + 2 3 8"
-e = "* + 2 x y"
+expr = "+ 6 * - 4 + 2 3 8"  #-2 output
+e = "* + 2 x y" # 9
 var = { "x": (0, 2), "y": (2, 4) }
 print(expr)
 print(max_result_expression(e, var))
