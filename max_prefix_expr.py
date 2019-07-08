@@ -1,31 +1,16 @@
 def max_result_expression(expression, variables):
     
     l ="".join(expression.rstrip())
-    strArr = l.split(" ")
-    
+    strArr = l.split(" ")    
     num = []
     if len(variables) == 0:
-        for i in reversed(strArr):       
-            if i == '+':               
-                sum(num)
-            elif i == '-':               
-                diff(num)
-            elif i == '*':               
-                mul(num)
-            elif i == '/':                
-                div(num)
-            elif i == '%':
-                remain(num)
-            else:
-                num.append(i)                
+        num = find_result(strArr)                
         result = num.pop()                     
     else:
         find_max=[]
-
         for n, i in enumerate(strArr):
             if i == 'x':             
-                a = variables['x']
-                
+                a = variables['x']                
                 x=[]
                 for i in reversed(a):
                     x.append(i)
@@ -45,42 +30,31 @@ def max_result_expression(expression, variables):
                                 y2 = y.pop()
                                 for i in range(y1,y2):
                                     strArr[m] = i
-                                    for i in reversed(strArr):       
-                                        if i == '+':               
-                                            sum(num)
-                                        elif i == '-':               
-                                            diff(num)
-                                        elif i == '*':               
-                                            mul(num)
-                                        elif i == '/':                
-                                            div(num)
-                                        elif i == '%':
-                                            remain(num)
-                                        else:
-                                            num.append(i)
+                                    num = find_result(strArr)
                                     find_max.append(num.pop())
                     else:
-                        for i in reversed(strArr):       
-                            if i == '+':               
-                                sum(num)
-                            elif i == '-':               
-                                diff(num)
-                            elif i == '*':               
-                                mul(num)
-                            elif i == '/':                
-                                div(num)
-                            elif i == '%':
-                                remain(num)
-                            else:
-                                num.append(i)
-                        
-                        find_max.append(num.pop())
-
-            
-        result = max(find_max)         
-
-    
+                        num = find_result(strArr)                        
+                        find_max.append(num.pop())            
+        result = max(find_max)    
     return result
+
+def find_result(strArr):
+    num =[]
+    print(strArr)
+    for i in reversed(strArr):       
+        if i == '+':               
+            sum(num)
+        elif i == '-':               
+            diff(num)
+        elif i == '*':               
+            mul(num)
+        elif i == '/':                
+            div(num)
+        elif i == '%':
+            remain(num)
+        else:
+            num.append(i)
+    return num
 
 def sum(num):
     a =  int(num.pop())
@@ -121,4 +95,4 @@ expr = "+ 6 * - 4 + 2 3 8"  #-2 output
 e = "* + 2 x y" # 9
 var = { "x": (0, 2), "y": (2, 4) }
 print(expr)
-print(max_result_expression(e, var))
+print(max_result_expression(expr, {}))
