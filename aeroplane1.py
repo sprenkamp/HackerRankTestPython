@@ -1,7 +1,5 @@
 def solution(N, S):
     available=0
-    occupied=[]
-    
     s = S.split(" ")
     for i in range(1,N+1):
         
